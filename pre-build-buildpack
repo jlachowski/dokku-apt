@@ -34,6 +34,7 @@ if [ -d $DIR/dpkg-packages ]; then
     done
 fi
 sleep 1 # wait so that docker run has not exited before docker attach
+apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 EOF
 )
 id=$(docker run -d $IMAGE /bin/bash -e -c "$COMMAND")
